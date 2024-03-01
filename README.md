@@ -21,3 +21,4 @@ The latest advancement of processors, graphic cards and other components.
 The mobile technologies section covers topics related to mobile app development, including frameworks, design principles, and emerging trends in the mobile space. It could include discussions on both Android and iOS development, as well as cross-platform solutions.
 
 </div>
+
