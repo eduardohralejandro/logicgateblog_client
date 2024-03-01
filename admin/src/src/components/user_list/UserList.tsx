@@ -35,14 +35,13 @@ const users: IAuthor[] = [
   },
 ];
 
-
 const UserList = () => {
   return (
     <>
       {users?.map((user: IAuthor) => {
         return (
           <div>
-            <h2>{user.name}</h2>
+            <h1>{user.name}</h1>
             <p>{user.email}</p>
             <p>{user.authorRole}</p>
           </div>

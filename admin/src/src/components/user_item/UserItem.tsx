@@ -1,10 +1,12 @@
-import UserList from "../user-list/UserList";
+import UserList from "../user_list/UserList";
 
 
 const UserItem = () => {
   return (
     <>
-      <UserList />
+      <div>
+        <UserList />
+      </div>
     </>
   );
 };
