@@ -1,6 +1,7 @@
 import styles from "./vertical-navbar.module.scss";
 import NavBarLinks from "../navbar_links/NavBarLinks";
 
+
 const VerticalNavbar = () => {
   return (
     <>
