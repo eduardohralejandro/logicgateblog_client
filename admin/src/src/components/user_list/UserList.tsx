@@ -1,6 +1,14 @@
+import { Table, Tag } from "antd";
+import type { TableProps } from "antd";
+
 enum AuthorRole {
-  ADMIN,
-  REGULAR,
+  ADMIN = "ADMIN",
+  REGULAR = "REGULAR",
+}
+
+enum ColorRoleTag {
+  RED = "red",
+  GREEN = "green",
 }
 
 interface IAuthor {
@@ -31,24 +39,46 @@ const users: IAuthor[] = [
     name: "Leita",
     lastName: "hernandez",
     photo: "optional",
-    authorRole: AuthorRole.ADMIN,
+    authorRole: AuthorRole.REGULAR,
+  },
+];
+
+const columns: TableProps<IAuthor>["columns"] = [
+  {
+    title: "Name",
+    dataIndex: "name",
+    key: "name",
+    render: (text) => <a>{text}</a>,
+  },
+  {
+    title: "Lastname",
+    dataIndex: "lastName",
+    key: "lastName",
+  },
+  {
+    title: "Email",
+    dataIndex: "email",
+    key: "email",
+  },
+  {
+    title: "Role",
+    key: "authorRole",
+    dataIndex: "authorRole",
+    render: (authorRole: AuthorRole) => {
+      const color: string = authorRole === AuthorRole.ADMIN ? ColorRoleTag.GREEN : ColorRoleTag.RED;
+      return (
+        <div>
+          <Tag color={color} key={authorRole}>
+            {authorRole.toString()}
+          </Tag>
+        </div>
+      );
+    },
   },
 ];
 
 const UserList = () => {
-  return (
-    <>
-      {users?.map((user: IAuthor) => {
-        return (
-          <div>
-            <h1>{user.name}</h1>
-            <p>{user.email}</p>
-            <p>{user.authorRole}</p>
-          </div>
-        );
-      })}
-    </>
-  );
+  return <Table  columns={columns} dataSource={users}  />;
 };
 
 export default UserList;
