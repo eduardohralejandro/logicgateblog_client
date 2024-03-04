@@ -3,7 +3,6 @@ import { UserOutlined, ReadOutlined } from "@ant-design/icons";
 import Logo from "../logo/Logo";
 import styles from "./nav_bar_links.module.scss";
 
-
 const NavBarLinks = () => {
   const customStyles = { fontSize: "1rem", color: "white" };
   return (
