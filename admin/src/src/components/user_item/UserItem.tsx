@@ -1,15 +1,16 @@
-import { useState, MouseEvent } from "react";
+import { useState, MouseEvent, FC } from "react";
 import { PlusCircleOutlined } from "@ant-design/icons";
+import { RouteProps } from 'react-router-dom';
 
 import UserList from "../user_list/UserList";
 import ButtonElement from "../button/ButtonElement";
 import ModalElement from "../modal/ModalElement";
-import AddUserLayout from "../addUserLayout/AddUserLayout";
-import AddUserFooterLayout from "../addUserFooterLayout/AddUserFooterLayout";
+import AddUserLayout from "../add_user_layout/AddUserLayout";
+import AddUserFooterLayout from "../add_user_footer_layout/AddUserFooterLayout";
 
 import styles from "./user_item.module.scss";
 
-const UserItem = () => {
+const UserItem: FC<RouteProps> = () => {
   const customStyles = { backgroundColor: "#52d64b" };
 
   const [open, setOpen] = useState(false);
