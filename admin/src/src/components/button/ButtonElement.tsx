@@ -1,16 +1,24 @@
-import { CSSProperties, FC, ReactNode } from "react";
+import { CSSProperties, FC, MouseEventHandler, ReactNode } from "react";
 import { Button } from "antd";
 
 interface IButtonProps {
-  text?: string;
+  text: string;
+  onClick?: MouseEventHandler<HTMLElement> | undefined;
   icon?: ReactNode;
   style?: CSSProperties;
+  htmlType?: string;
   type?: "text" | "link" | "default" | "primary" | "dashed";
 }
 
-const ButtonElement: FC<IButtonProps> = ({ text, icon, style, type }) => {
+const ButtonElement: FC<IButtonProps> = ({
+  text,
+  icon,
+  style,
+  type,
+  onClick,
+}) => {
   return (
-    <Button type={type} style={style} icon={icon}>
+    <Button type={type} style={style} icon={icon} onClick={onClick}>
       {text}
     </Button>
   );

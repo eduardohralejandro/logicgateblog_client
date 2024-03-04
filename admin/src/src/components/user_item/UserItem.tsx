@@ -1,11 +1,33 @@
+import { useState, MouseEvent } from "react";
+import { PlusCircleOutlined } from "@ant-design/icons";
+
 import UserList from "../user_list/UserList";
 import ButtonElement from "../button/ButtonElement";
+import ModalElement from "../modal/ModalElement";
+import AddUserLayout from "../addUserLayout/AddUserLayout";
+import AddUserFooterLayout from "../addUserFooterLayout/AddUserFooterLayout";
 
-import { PlusCircleOutlined } from "@ant-design/icons";
 import styles from "./user_item.module.scss";
 
 const UserItem = () => {
   const customStyles = { backgroundColor: "#52d64b" };
+
+  const [open, setOpen] = useState(false);
+
+  const showModal = () => {
+    setOpen(true);
+  };
+
+  const handleOk = (event: MouseEvent<HTMLElement>) => {
+    console.log(event);
+    setOpen(false);
+  };
+
+  const handleCancel = (event: MouseEvent<HTMLElement>) => {
+    console.log(event);
+    setOpen(false);
+  };
+
   return (
     <>
       <div className={styles.outer_box_user_item}>
@@ -15,6 +37,15 @@ const UserItem = () => {
             type="primary"
             text="Add user"
             icon={<PlusCircleOutlined />}
+            onClick={showModal}
+          />
+          <ModalElement
+            title="Add new user"
+            open={open}
+            handleCancel={handleCancel}
+            handleOk={handleOk}
+            children={<AddUserLayout />}
+            footer={<AddUserFooterLayout />}
           />
         </div>
         <UserList />
