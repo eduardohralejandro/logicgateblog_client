@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+.outer_box_arl {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 3rem;
+  width: 2rem;
+  padding-top: 5rem;
+  font-family: 'Rubik';
+  color: rgba(52, 49, 49, 0.872);
+  .header_add_article {
+    display: flex;
+    justify-content: space-between;
+  }
+}

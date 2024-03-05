@@ -5,7 +5,7 @@ const data = Array.from({ length: 23 }).map((_, i) => ({
   href: "https://ant.design",
   title: `Binary ${i}`,
   avatar: `https://api.dicebear.com/7.x/miniavs/svg?seed=${i}`,
-  description: "How does binary work?",
+  description: "Created by: Eduardo",
   content:
     "In the context of mathematics and computer science, 'binary' often refers to the binary number system, which is a base-2 numeral system. It uses only two digits, 0 and 1, to represent numbers. In this system, each digit's position represents a power of 2.",
 }));
@@ -20,7 +20,7 @@ interface IListElementProps {
     pageSize: number;
   };
   style?: { [key: string]: string };
-  extra: ReactNode;
+  extra?: ReactNode;
   avatar?: ReactNode;
   description?: ReactNode;
   title?: ReactNode;
@@ -40,10 +40,11 @@ const ListElement: FC<IListElementProps> = () => (
     dataSource={data}
     renderItem={(item) => (
       <List.Item
+        style={{ width: "100%" }}
         key={item.title}
         extra={
           <img
-            width={272}
+            width={160}
             alt="logo"
             src="https://cdn.gencraft.com/prod/user/3f91e08b-004a-41b2-a73a-e58ccfd3e774/a4d21d11-42d7-4a92-9a73-1489c61468af/image/image0_0.jpg?Expires=1709711684&Signature=ZLeBAJ1CNdHIJ~2GT9pRjbU-JETkIywTiZvKgMQUXJsasW9tXEJrZsTHWVef0rM1CVBychgAbEvUOT5ZieE35MZjFcM9fKLwDk3NJAQ4ju4TPdv2wzjE2-N4Uo3R7kD59Fha2HIKdaHqq7ahm7nWxztSvgBvEo5oocpD8gBKHCbQ2~oadG-JJlohT3jNmx5Su2pkaa8MQWasS7UgdZH8OEqOHI7S3GyjvqXZiJtaxjUYfZ7jBIY7J8FjUvaGM33fiZBALoYXgbVZHx3Uho62vJ8SDTTDr9lXaawf7feaco5~2jd4~Qe~9jSEL86gW295qnCxTsV3UvlLYrf5gxUPZg__&Key-Pair-Id=K3RDDB1TZ8BHT8"
           />
@@ -51,8 +52,8 @@ const ListElement: FC<IListElementProps> = () => (
       >
         <List.Item.Meta
           avatar={<Avatar src={item.avatar} />}
-          title={<a href={item.href}>{item.title}</a>}
           description={item.description}
+          title={<a href={item.href}>{item.title}</a>}
         />
         {item.content}
       </List.Item>
