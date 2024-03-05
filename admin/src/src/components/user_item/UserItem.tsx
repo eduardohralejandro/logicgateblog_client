@@ -1,5 +1,5 @@
 import { useState, MouseEvent, FC } from "react";
-import { PlusCircleOutlined } from "@ant-design/icons";
+import { PlusCircleFilled } from "@ant-design/icons";
 import { RouteProps } from 'react-router-dom';
 
 import UserList from "../user_list/UserList";
@@ -37,7 +37,7 @@ const UserItem: FC<RouteProps> = () => {
             style={customStyles}
             type="primary"
             text="Add user"
-            icon={<PlusCircleOutlined />}
+            icon={<PlusCircleFilled />}
             onClick={showModal}
           />
           <ModalElement

@@ -4,7 +4,8 @@ import UserItem from "./src/components/user_item/UserItem";
 import VerticalNavbar from "./src/components/vertical_navbar/VerticalNavbar";
 
 import styles from "./app.module.scss";
-import ListElement from "./src/components/list_element/ListElement";
+import AddArticleLayout from './src/components/add_article_layout/AddArticleLayout';
+
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           <VerticalNavbar />
           <Routes>
             <Route path="/" element={<UserItem />} />
-            <Route path="/articles" element={<ListElement />} />
+            <Route path="/articles" element={<AddArticleLayout />} />
           </Routes>
         </div>
       </Router>
