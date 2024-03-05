@@ -2,9 +2,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import UserItem from "./src/components/user_item/UserItem";
 import VerticalNavbar from "./src/components/vertical_navbar/VerticalNavbar";
-import ArticleLayout from "./src/components/article_layout/ArticleLayout";
 
 import styles from "./app.module.scss";
+import ListElement from "./src/components/list_element/ListElement";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
           <VerticalNavbar />
           <Routes>
             <Route path="/" element={<UserItem />} />
-            <Route path="/articles" element={<ArticleLayout />} />
+            <Route path="/articles" element={<ListElement />} />
           </Routes>
         </div>
       </Router>
