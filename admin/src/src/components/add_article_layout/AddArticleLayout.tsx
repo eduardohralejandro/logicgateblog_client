@@ -1,6 +1,6 @@
 import ButtonElement from "../button/ButtonElement";
 import { PlusCircleFilled } from "@ant-design/icons";
-import ListElement from "../list_element/ListElement";
+import { ListElement } from "../components";
 
 import styles from "./add_article_layout.module.scss";
 
