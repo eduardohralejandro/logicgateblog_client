@@ -4,9 +4,15 @@ import { Typography } from "antd";
 import { ListElement } from "../components";
 
 import useModalState from "../../hooks/useModalState";
-import { ModalElement, TextEditor, InputElement } from "../components";
+import {
+  ModalElement,
+  TextEditor,
+  InputElement,
+  ButtonsFooterElement,
+} from "../components";
 
 import styles from "./add_article_layout.module.scss";
+import { BtnHtmlType, BtnJustifyType } from "../../enums/enums";
 
 const AddArticleLayout = () => {
   const { open, showModal, handleOk, handleCancel } = useModalState();
@@ -45,7 +51,15 @@ const AddArticleLayout = () => {
                 <TextEditor />
               </>
             }
-            footer={<footer>Footer goes here</footer>}
+            footer={
+              <ButtonsFooterElement
+                justify={BtnJustifyType.END}
+                style={{ marginLeft: "1rem" }}
+                htmlType={[BtnHtmlType.BUTTON, BtnHtmlType.SUBMIT]}
+                textCancel={"Cancel"}
+                textSubmit={"Submit"}
+              />
+            }
           />
         </div>
         <ListElement />
