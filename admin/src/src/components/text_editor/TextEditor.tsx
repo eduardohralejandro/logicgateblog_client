@@ -4,8 +4,7 @@ import TextAlign from "@tiptap/extension-text-align";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 
-import { MenuBar }from '../components';
-
+import { MenuBar } from "../components";
 
 const TextEditor: FC = () => {
   const editor = useEditor({
@@ -22,7 +21,7 @@ const TextEditor: FC = () => {
   return (
     <div>
       <MenuBar editor={editor} />
-      <EditorContent editor={editor} />
+      <EditorContent style={{ height: "15rem" , overflow: 'scroll'}} editor={editor} />
     </div>
   );
 };

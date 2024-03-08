@@ -5,3 +5,5 @@ export { default as ModalElement } from "./modal/ModalElement";
 export { default as AddUserLayout } from "./add_user_layout/AddUserLayout";
 export { default as AddUserFooterLayout } from "./add_user_footer_layout/AddUserFooterLayout";
 export { default as MenuBar } from "./text_menu_bar/MenuBar";
+export { default as TextEditor } from "./text_editor/TextEditor";
+export { default as InputElement } from "./input/InputElement";
