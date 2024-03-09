@@ -54,7 +54,7 @@ const AddArticleLayout = () => {
             footer={
               <ButtonsFooterElement
                 justify={BtnJustifyType.END}
-                style={{ marginLeft: "1rem" }}
+                style={{ marginLeft: "0.75rem" }}
                 htmlType={[BtnHtmlType.BUTTON, BtnHtmlType.SUBMIT]}
                 textCancel={"Cancel"}
                 textSubmit={"Submit"}

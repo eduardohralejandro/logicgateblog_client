@@ -8,7 +8,9 @@ import {
   ModalElement,
   AddUserLayout,
   AddUserFooterLayout,
+  HeaderElement,
 } from "../components";
+import { HeaderSize } from "../../enums/enums";
 import useModalState from "../../hooks/useModalState";
 
 import styles from "./user_item.module.scss";
@@ -21,6 +23,7 @@ const UserItem: FC<RouteProps> = () => {
     <>
       <div className={styles.outer_box_user_item}>
         <div className={styles.button_frame}>
+          <HeaderElement title="Users" level={HeaderSize.H5} />
           <ButtonElement
             style={customStyles}
             type="primary"
