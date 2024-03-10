@@ -15,7 +15,7 @@ import {
   ItalicIcon,
 } from "lucide-react";
 
-import styles from "./text_menu_bar.module.scss";
+import styles from "./menu_bar.module.scss";
 
 interface IMenuBarProps {
   editor: Editor | null;
@@ -27,7 +27,7 @@ const MenuBar: FC<IMenuBarProps> = ({ editor }) => {
   }
 
   return (
-    <div className={styles.toolbar_container}>
+    <div className={styles.menu_bar}>
       <span
         onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
         className={editor.isActive("heading", { level: 1 }) ? "is-active" : ""}

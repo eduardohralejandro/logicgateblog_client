@@ -27,8 +27,8 @@ const AddArticleLayout = () => {
   };
   return (
     <>
-      <div className={styles.outer_box_arl}>
-        <div className={styles.header_add_article}>
+      <div className={styles.add_article_layout}>
+        <div className={styles.add_article_layout__header}>
           <h3>Articles</h3>
           <ButtonElement
             style={customStyles}

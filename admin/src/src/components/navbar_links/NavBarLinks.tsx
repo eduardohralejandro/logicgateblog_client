@@ -2,22 +2,22 @@ import { UserOutlined, ReadOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
 import Logo from "../logo/Logo";
-import styles from "./nav_bar_links.module.scss";
+import styles from "./navbar.module.scss";
 
 const NavBarLinks = () => {
   const customStyles = { fontSize: "1rem", color: "white" };
   return (
-    <nav>
-      <Logo />
-      <div className={styles.outer_link_box}>
+    <nav className={styles.navbar}>
+      <Logo className={styles.navbar__logo} />
+      <div className={styles.navbar__containers}>
         <UserOutlined style={customStyles} />
-        <Link className={styles.links_nav} to="/">
+        <Link className={styles.navbar__links} to="/">
           <p>Users</p>
         </Link>
       </div>
-      <div className={styles.outer_link_box}>
+      <div className={styles.navbar__containers}>
         <ReadOutlined style={customStyles} />
-        <Link className={styles.links_nav} to="/articles">
+        <Link className={styles.navbar__links} to="/articles">
           <p>Articles</p>
         </Link>
       </div>
