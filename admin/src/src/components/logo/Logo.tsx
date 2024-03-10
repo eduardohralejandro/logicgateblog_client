@@ -1,6 +1,12 @@
-import styles from './logo.module.scss';
+import { FC } from "react";
 
-const Logo = () => <div className={styles.logo_lg}><img  src="./logo.png" alt="logo_logicgate_blog" /></div>
-
+interface ILogoProps {
+  className?: string;
+}
+const Logo: FC<ILogoProps> = ({ className }) => (
+  <div className={className}>
+    <img src="./logo.png" alt="logo_logicgate_blog" />
+  </div>
+);
 
 export default Logo;

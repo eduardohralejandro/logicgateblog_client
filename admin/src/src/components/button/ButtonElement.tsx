@@ -7,6 +7,7 @@ interface IButtonProps {
   icon?: ReactNode;
   style?: CSSProperties;
   htmlType?: string;
+  className?: string;
   type?: "text" | "link" | "default" | "primary" | "dashed";
 }
 
@@ -16,9 +17,16 @@ const ButtonElement: FC<IButtonProps> = ({
   style,
   type,
   onClick,
+  className,
 }) => {
   return (
-    <Button type={type} style={style} icon={icon} onClick={onClick}>
+    <Button
+      className={className}
+      type={type}
+      style={style}
+      icon={icon}
+      onClick={onClick}
+    >
       {text}
     </Button>
   );

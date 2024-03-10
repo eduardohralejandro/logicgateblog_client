@@ -21,8 +21,8 @@ const UserItem: FC<RouteProps> = () => {
 
   return (
     <>
-      <div className={styles.outer_box_user_item}>
-        <div className={styles.button_frame}>
+      <div className={styles.user_item}>
+        <div className={styles.user_item__btn_container}>
           <HeaderElement title="Users" level={HeaderSize.H5} />
           <ButtonElement
             style={customStyles}

@@ -1,10 +1,11 @@
-.outer_box_user_item {
+.user_item {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   padding: 2rem;
   margin-top: 10rem;
-  .button_frame {
+
+  &__btn_container {
     display: flex;
     justify-content: space-between;
     padding: 0rem 0rem 3rem 0rem;

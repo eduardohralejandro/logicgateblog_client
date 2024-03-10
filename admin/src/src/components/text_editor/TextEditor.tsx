@@ -21,7 +21,10 @@ const TextEditor: FC = () => {
   return (
     <div>
       <MenuBar editor={editor} />
-      <EditorContent style={{ height: "15rem" , overflow: 'scroll'}} editor={editor} />
+      <EditorContent
+        style={{ height: "15rem", overflow: "scroll" }}
+        editor={editor}
+      />
     </div>
   );
 };
