@@ -1,14 +1,13 @@
 import ButtonElement from "../button/ButtonElement";
 import { PlusCircleFilled } from "@ant-design/icons";
 import { Typography } from "antd";
-import { ListElement } from "../components";
-
 import useModalState from "../../hooks/useModalState";
 import {
   ModalElement,
   TextEditor,
   InputElement,
   ButtonsFooterElement,
+  Articles,
 } from "../components";
 
 import styles from "./add_article_layout.module.scss";
@@ -62,7 +61,7 @@ const AddArticleLayout = () => {
             }
           />
         </div>
-        <ListElement />
+        <Articles />
       </div>
     </>
   );

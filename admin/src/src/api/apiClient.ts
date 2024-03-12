@@ -1,5 +1,4 @@
-const BASE_URL = import.meta.env.VITE_BASE_URL_DEV
-
+const BASE_URL = 'http://localhost:8080'
 const apiClient = async <T>(endpoint: string): Promise<T> => {
   const response = await fetch(`${BASE_URL}/${endpoint}`);
   if (!response.ok) {
