@@ -12,3 +12,4 @@ export { default as ListElement } from "./list_element/ListElement";
 export { default as ButtonElement } from "./button/ButtonElement";
 export { default as ModalElement } from "./modal/ModalElement";
 export { default as HeaderElement } from "./header/HeaderElement";
+export { default as Articles } from "./articles/Articles";
