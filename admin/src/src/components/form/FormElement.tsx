@@ -1,16 +1,12 @@
 import { FC, ReactNode } from "react";
 import { Form } from "antd";
 
-interface IFormProps {
-  children: ReactNode;
-}
-
-interface MyFormValues {
+interface formValues {
   [field: string]: string;
 }
 
 interface IErrorInfo {
-  values: MyFormValues;
+  values: formValues;
   errorFields: {
     name: (string | number)[];
     errors: string[];
@@ -18,7 +14,27 @@ interface IErrorInfo {
   outOfDate: boolean;
 }
 
-const FormElement: FC<IFormProps> = ({ children }) => {
+interface IDesignProps {
+  designProps: {
+    labelCol?: { span: number };
+    wrapperCol?: { span: number };
+  };
+}
+interface IFormProps {
+  children: ReactNode;
+  onFinish?: (value: string) => void;
+  onFinishFailed?: () => void;
+  onFieldsChange?: (changedFields: string) => void;
+  name: string;
+  layout: "horizontal" | "vertical" | "inline";
+  style?: { [key: string]: string };
+}
+type FormPropsWithDefaults = IFormProps & { layout?: "vertical" };
+
+const FormElement: FC<FormPropsWithDefaults> = (
+  { children, name, layout, style },
+  designProps: IDesignProps
+) => {
   const onFinish = (values: string) => {
     console.log("Success:", values);
   };
@@ -30,10 +46,11 @@ const FormElement: FC<IFormProps> = ({ children }) => {
   return (
     <>
       <Form
-        name="basic"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
-        style={{ maxWidth: 600 }}
+        name={name}
+        layout={layout}
+        labelCol={designProps.designProps?.labelCol}
+        wrapperCol={designProps.designProps?.wrapperCol}
+        style={style}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="on"
