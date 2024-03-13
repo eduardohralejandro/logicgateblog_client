@@ -4,6 +4,7 @@ export { default as AddUserLayout } from "./add_user_layout/AddUserLayout";
 export { default as AddUserFooterLayout } from "./add_user_footer_layout/AddUserFooterLayout";
 export { default as AddArticleLayout } from "./add_article_layout/AddArticleLayout";
 export { default as Register } from "./register/Register";
+export { default as Login } from "./login/Login";
 
 /* UI elements */
 export { default as MenuBar } from "./menu_bar/MenuBar";
