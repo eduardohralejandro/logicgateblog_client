@@ -8,10 +8,17 @@ import {
   Register,
   AddArticleLayout,
   FormElement,
+  Login,
 } from "./src/components/components";
 
 function App() {
   const designProps = { labelCol: 6, wrapperCol: 8 };
+  const customFormStyle = {
+    width: "20rem",
+    border: "1px solid #d1d1d1",
+    padding: "1rem",
+    borderRadius: "6px",
+  };
   return (
     <>
       <Router>
@@ -26,15 +33,24 @@ function App() {
                 <>
                   <FormElement
                     {...designProps}
-                    style={{
-                      width: "20rem",
-                      border: "1px solid #d1d1d1",
-                      padding: "1rem",
-                      borderRadius: "6px",
-                    }}
+                    style={customFormStyle}
                     name="basic"
                     layout="vertical"
                     children={<Register />}
+                  />
+                </>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <>
+                  <FormElement
+                    {...designProps}
+                    style={customFormStyle}
+                    name="basic"
+                    layout="vertical"
+                    children={<Login />}
                   />
                 </>
               }
