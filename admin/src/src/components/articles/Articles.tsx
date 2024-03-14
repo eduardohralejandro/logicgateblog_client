@@ -9,9 +9,10 @@ import { ListElement } from "../components";
 import { Article } from "../../interfaces/interfaces";
 import { Avatar, List } from "antd";
 import { formatDate } from "../../utils/formatDate";
+import { AppDispatch } from "../../app/store";
 
 const Articles = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const articles = useSelector(selectArticles);
 
   useEffect(() => {
