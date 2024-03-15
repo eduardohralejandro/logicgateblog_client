@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import { Form } from "antd";
+import { Form, FormInstance } from "antd";
 
 interface formValues {
   [field: string]: string;
@@ -28,17 +28,14 @@ interface IFormProps {
   name: string;
   layout: "horizontal" | "vertical" | "inline";
   style?: { [key: string]: string };
+  form?: FormInstance;
 }
 type FormPropsWithDefaults = IFormProps & { layout?: "vertical" };
 
 const FormElement: FC<FormPropsWithDefaults> = (
-  { children, name, layout, style },
+  { children, name, layout, style, form, onFinish },
   designProps: IDesignProps
 ) => {
-  const onFinish = (values: string) => {
-    console.log("Success:", values);
-  };
-
   const onFinishFailed = (errorInfo: IErrorInfo) => {
     console.log("Failed:", errorInfo);
   };
@@ -46,6 +43,7 @@ const FormElement: FC<FormPropsWithDefaults> = (
   return (
     <>
       <Form
+        form={form}
         name={name}
         layout={layout}
         labelCol={designProps.designProps?.labelCol}
