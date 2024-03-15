@@ -1,4 +1,5 @@
 interface IAuthor {
+  password2?: string;
   name: string;
   lastName: string;
   email: string;

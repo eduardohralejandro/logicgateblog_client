@@ -27,7 +27,16 @@ export const registerUserAsync = createAsyncThunk(
 const authRegisterSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    setAuthenticated: (state, action: PayloadAction<"">) => {
+      state.data = action.payload;
+      state.isAuthenticated = true;
+    },
+    setUnauthenticated: (state) => {
+      state.data = "";
+      state.isAuthenticated = false;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(registerUserAsync.pending, (state) => {
@@ -38,6 +47,7 @@ const authRegisterSlice = createSlice({
         (state, action: PayloadAction<"">) => {
           state.loading = "succeeded";
           state.data = action.payload;
+          state.isAuthenticated = true;
         }
       )
       .addCase(
@@ -45,11 +55,17 @@ const authRegisterSlice = createSlice({
         (state, action: PayloadAction<string>) => {
           state.loading = "failed";
           state.error = action.payload;
+          state.isAuthenticated = false;
         }
       );
   },
 });
 
+export const { setAuthenticated, setUnauthenticated } =
+  authRegisterSlice.actions;
+
 export const authSelect = (state: RootState) => state.register.data;
+export const selectIsAuthenticated = (state: RootState) =>
+  state.register.isAuthenticated;
 
 export default authRegisterSlice.reducer;
