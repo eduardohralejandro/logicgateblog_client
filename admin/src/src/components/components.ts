@@ -6,6 +6,7 @@ export { default as AddArticleLayout } from "./add_article_layout/AddArticleLayo
 export { default as Register } from "./register/Register";
 export { default as Login } from "./login/Login";
 export { default as RegisterLayout } from "./register_layout/RegisterLayout";
+export { default as LoginLayout } from "./login_layout/LoginLayout";
 
 /* UI elements */
 export { default as MenuBar } from "./menu_bar/MenuBar";

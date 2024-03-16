@@ -13,9 +13,11 @@ const apiClient = async <T>(
   try {
     const response = await fetch(`${BASE_URL}/${endpoint}`, options);
 
-    if (response.status === 403) {
-      return { message: "Access denied", statusCode: 403, response };
+    if (!response.ok) {
+      const data = await response.json();
+      throw new Error(data.message);
     }
+
     return await response.json();
   } catch (error) {
     throw new Error("Error message: " + error);
