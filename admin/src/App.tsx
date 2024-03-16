@@ -7,53 +7,36 @@ import {
 } from "react-router-dom";
 import UserItem from "./src/components/user_item/UserItem";
 import VerticalNavbar from "./src/components/vertical_navbar/VerticalNavbar";
-import { selectIsAuthenticated } from "./src/features/auth/userRegisterSlice";
+import { loginSelect } from "./src/features/login/userLoginSlice";
 import styles from "./app.module.scss";
 import {
   AddArticleLayout,
-  FormElement,
-  Login,
   RegisterLayout,
+  LoginLayout,
 } from "./src/components/components";
 import { useSelector } from "react-redux";
 
 function ProtectedRoutes() {
-  const isAuthenticated = localStorage.getItem("token");
-  return isAuthenticated ? <Outlet /> : <Navigate to="/register" />;
+  const isLoggedIn = useSelector(loginSelect);
+  return isLoggedIn ? <Outlet /> : <Navigate to="/login" />;
 }
 
 function App() {
-  const isAuthenticated = useSelector(selectIsAuthenticated);
-  const designProps = { labelCol: 6, wrapperCol: 8 };
-  const customFormStyle = {
-    width: "20rem",
-    border: "1px solid #d1d1d1",
-    padding: "1rem",
-    borderRadius: "6px",
-  };
-
+  const isLoggedIn = useSelector(loginSelect);
   return (
     <Router>
       <div className={styles.app_container}>
-        {!isAuthenticated ? null : <VerticalNavbar />}
+        {!isLoggedIn ? null : <VerticalNavbar />}
         <Routes>
           <Route element={<ProtectedRoutes />}>
             <Route path="/" element={<UserItem />} />
             <Route path="/articles" element={<AddArticleLayout />} />
           </Route>
           <Route path="/register" element={<RegisterLayout />} />
-          <Route
-            path="/login"
-            element={
-              <FormElement
-                {...designProps}
-                style={customFormStyle}
-                name="basic"
-                layout="vertical"
-                children={<Login />}
-              />
-            }
-          />
+          <Route path="/login" element={<LoginLayout />} />
+          {isLoggedIn ? null : (
+            <Route path="/login" element={<LoginLayout />} />
+          )}
         </Routes>
       </div>
     </Router>
