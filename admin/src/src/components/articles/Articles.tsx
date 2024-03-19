@@ -10,6 +10,7 @@ import { Article } from "../../interfaces/interfaces";
 import { Avatar, List } from "antd";
 import { formatDate } from "../../utils/formatDate";
 import { AppDispatch } from "../../app/store";
+import { htmlParser } from "../../utils/htmlParser";
 
 const Articles = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -29,7 +30,7 @@ const Articles = () => {
           description={`Created: ${formatDate(new Date(item.dateCreated))}`}
           title={<a>{item.title}</a>}
         />
-        {item.body}
+        {htmlParser(item.body)}
       </List.Item>
     );
   };
