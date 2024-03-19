@@ -6,7 +6,11 @@ import StarterKit from "@tiptap/starter-kit";
 
 import { MenuBar } from "../components";
 
-const TextEditor: FC = () => {
+interface ITextEditorPros {
+  setEditorContent: (value: string) => void;
+}
+
+const TextEditor: FC<ITextEditorPros> = ({ setEditorContent }) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -15,7 +19,10 @@ const TextEditor: FC = () => {
       }),
       Highlight,
     ],
-    content: `HTML element goes here <h1>H1</h1>`,
+    content: "",
+    onUpdate({ editor }) {
+      setEditorContent(editor.getHTML());
+    },
   });
 
   return (

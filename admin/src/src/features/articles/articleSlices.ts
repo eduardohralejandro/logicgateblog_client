@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { fetchArticles } from "../../api/article/articles";
+import { IArticleRequest, createArticle } from "../../api/article/postArticle";
 import { Article } from "../../interfaces/interfaces";
 import { RootState } from "@reduxjs/toolkit/query";
 
@@ -22,6 +23,17 @@ export const fetchArticlesAsync = createAsyncThunk(
   }
 );
 
+export const postArticlesAsync = createAsyncThunk(
+  "articles/postArticles",
+  async (data: IArticleRequest, thunkAPI) => {
+    try {
+      const response = await createArticle(data);
+      return response;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 const articlesSlice = createSlice({
   name: "articles",
   initialState,
@@ -40,6 +52,23 @@ const articlesSlice = createSlice({
       )
       .addCase(
         fetchArticlesAsync.rejected,
+        (state, action: PayloadAction<string>) => {
+          state.loading = "failed";
+          state.error = action.payload;
+        }
+      )
+      .addCase(postArticlesAsync.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(
+        postArticlesAsync.fulfilled,
+        (state, action: PayloadAction<any>) => {
+          state.loading = "idle";
+          state.data = action.payload;
+        }
+      )
+      .addCase(
+        postArticlesAsync.rejected,
         (state, action: PayloadAction<string>) => {
           state.loading = "failed";
           state.error = action.payload;
