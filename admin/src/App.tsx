@@ -13,6 +13,7 @@ import {
   AddArticleLayout,
   RegisterLayout,
   LoginLayout,
+  Article,
 } from "./src/components/components";
 import { useSelector } from "react-redux";
 
@@ -31,6 +32,7 @@ function App() {
           <Route element={<ProtectedRoutes />}>
             <Route path="/" element={<UserItem />} />
             <Route path="/articles" element={<AddArticleLayout />} />
+            <Route path="/articles/:id" element={<Article />} />
           </Route>
           <Route path="/register" element={<RegisterLayout />} />
           <Route path="/login" element={<LoginLayout />} />

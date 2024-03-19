@@ -11,6 +11,7 @@ import { Avatar, List } from "antd";
 import { formatDate } from "../../utils/formatDate";
 import { AppDispatch } from "../../app/store";
 import { htmlParser } from "../../utils/htmlParser";
+import { Link } from "react-router-dom";
 
 const Articles = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -24,14 +25,17 @@ const Articles = () => {
   const renderArticles = (item: Article, index: number) => {
     const randUserAvatar = `https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`;
     return (
-      <List.Item style={{ width: "100%" }} key={index} extra={<p>Image</p>}>
-        <List.Item.Meta
-          avatar={<Avatar src={randUserAvatar} />}
-          description={`Created: ${formatDate(new Date(item.dateCreated))}`}
-          title={<a>{item.title}</a>}
-        />
-        {htmlParser(item.body)}
-      </List.Item>
+      <Link to={`/articles/${item.articleId}`}>
+        <List.Item style={{ width: "100%" }} key={index} extra={<p>Image</p>}>
+          <List.Item.Meta
+            avatar={<Avatar src={randUserAvatar} />}
+            description={`Created: ${formatDate(new Date(item.dateCreated))}`}
+            title={item.title}
+          />
+
+          {htmlParser(item.body)}
+        </List.Item>
+      </Link>
     );
   };
 
