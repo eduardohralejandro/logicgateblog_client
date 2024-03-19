@@ -14,10 +14,11 @@ import { AppDispatch } from "../../app/store";
 const Articles = () => {
   const dispatch = useDispatch<AppDispatch>();
   const articles = useSelector(selectArticles);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     dispatch(fetchArticlesAsync());
-  }, [dispatch]);
+  }, [dispatch, token]);
 
   const renderArticles = (item: Article, index: number) => {
     const randUserAvatar = `https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`;

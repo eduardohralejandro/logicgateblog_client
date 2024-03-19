@@ -1,5 +1,3 @@
-const BASE_URL = "http://localhost:8080";
-
 export interface ErrorMessage {
   message: string;
   statusCode: number;
@@ -11,14 +9,18 @@ const apiClient = async <T>(
   options: RequestInit = {}
 ): Promise<T | ErrorMessage> => {
   try {
-    const response = await fetch(`${BASE_URL}/${endpoint}`, options);
-
+    const response = await fetch(`/api/${endpoint}`, options);
     if (!response.ok) {
-      const data = await response.json();
-      throw new Error(data.message);
+      const errorData: ErrorMessage = {
+        message: "Error occurred",
+        statusCode: response.status,
+        response: response,
+      };
+      throw new Error(JSON.stringify(errorData));
     }
+    const responseData: T = await response.json();
 
-    return await response.json();
+    return responseData || ({} as T);
   } catch (error) {
     throw new Error("Error message: " + error);
   }

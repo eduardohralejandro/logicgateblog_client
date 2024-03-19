@@ -7,6 +7,7 @@ interface IButtonsFooterElementProps {
   htmlType: [BtnHtmlType.BUTTON, BtnHtmlType.SUBMIT];
   textCancel: string;
   textSubmit: string;
+  submit?: () => void;
   style?: { [key: string]: string };
 }
 
@@ -16,6 +17,7 @@ const ButtonsFooterElement: FC<IButtonsFooterElementProps> = ({
   textCancel,
   textSubmit,
   style,
+  submit
 }) => {
   return (
     <Form.Item>
@@ -26,7 +28,7 @@ const ButtonsFooterElement: FC<IButtonsFooterElementProps> = ({
           </Button>
         </Col>
         <Col>
-          <Button style={style} type={BtnType.PRIMARY} htmlType={htmlType[1]}>
+          <Button onClick={submit} style={style} type={BtnType.PRIMARY} htmlType={htmlType[1]}>
             {textSubmit}
           </Button>
         </Col>

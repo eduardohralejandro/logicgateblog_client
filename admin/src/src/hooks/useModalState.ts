@@ -22,6 +22,7 @@ const useModalState = () => {
     showModal,
     handleOk,
     handleCancel,
+    setOpen,
   };
 };
 

@@ -1,9 +1,14 @@
 import { Input } from "antd";
+import { ChangeEvent, FC } from "react";
 
-const InputElement = () => {
+interface IInputProps {
+  value?: string;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+}
+const InputElement: FC<IInputProps> = ({ value, onChange }) => {
   return (
     <>
-      <Input />
+      <Input value={value} onChange={onChange} />
     </>
   );
 };
