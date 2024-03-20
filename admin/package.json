@@ -18,6 +18,7 @@
     "@tiptap/prosemirror-tables": "^1.1.4",
     "@tiptap/react": "^2.2.4",
     "@tiptap/starter-kit": "^2.2.4",
+    "dompurify": "^3.0.10",
     "jwt-decode": "^4.0.0",
     "lucide-react": "^0.263.1",
     "node-sass": "^9.0.0",
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "@types/antd": "^1.0.0",
+    "@types/dompurify": "^3.0.5",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^7.0.2",

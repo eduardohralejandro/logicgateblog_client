@@ -6,6 +6,9 @@ import {
   selectArticle,
 } from "../../features/articles/articleSlices";
 import { AppDispatch } from "../../app/store";
+import DOMPurify from "dompurify";
+import styles from "./article.module.scss";
+import { Avatar } from "antd";
 
 const Article = () => {
   const { id } = useParams();
@@ -15,12 +18,22 @@ const Article = () => {
   useEffect(() => {
     dispatch(fetchArticleAsync(Number(id)));
   }, [dispatch, id]);
+  const randUserAvatar = `https://api.dicebear.com/7.x/miniavs/svg?seed=${id}`;
+
   return (
     <>
       {article && (
-        <div>
-          <h3>{article.title}</h3>
-          <p>{article.body}</p>
+        <div className={styles.article_container}>
+          <h1>{article.title}</h1>
+          <span className={styles.article_container__avatar}>
+            <Avatar src={randUserAvatar} />
+          </span>
+          <div
+            className={styles.article_container__html_container}
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(article.body),
+            }}
+          />
         </div>
       )}
     </>
