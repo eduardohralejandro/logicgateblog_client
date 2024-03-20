@@ -11,7 +11,15 @@ interface ITextEditorPros {
 }
 
 const TextEditor: FC<ITextEditorPros> = ({ setEditorContent }) => {
+  const updateEditorContent = (content: string) => {
+    const contentWithLineBreaks = content.replace(/<\/p>/g, "</p><br>");
+    setEditorContent(contentWithLineBreaks);
+  };
+
   const editor = useEditor({
+    parseOptions: {
+      preserveWhitespace: true,
+    },
     extensions: [
       StarterKit,
       TextAlign.configure({
@@ -21,7 +29,7 @@ const TextEditor: FC<ITextEditorPros> = ({ setEditorContent }) => {
     ],
     content: "",
     onUpdate({ editor }) {
-      setEditorContent(editor.getHTML());
+      updateEditorContent(editor.getHTML());
     },
   });
 
