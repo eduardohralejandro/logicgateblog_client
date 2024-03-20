@@ -12,6 +12,7 @@ import { formatDate } from "../../utils/formatDate";
 import { AppDispatch } from "../../app/store";
 import { htmlParser } from "../../utils/htmlParser";
 import { Link } from "react-router-dom";
+import { truncateString } from "../../utils/truncateString";
 
 const Articles = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -33,7 +34,7 @@ const Articles = () => {
             title={item.title}
           />
 
-          {htmlParser(item.body)}
+          {truncateString(htmlParser(item.body), 300)}
         </List.Item>
       </Link>
     );
