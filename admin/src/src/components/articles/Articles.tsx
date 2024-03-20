@@ -33,7 +33,7 @@ const Articles = () => {
           extra={
             <img
               style={{ height: "15rem", width: "15rem" }}
-              src={item.photo}
+              src={item?.photo}
               alt=""
             />
           }
