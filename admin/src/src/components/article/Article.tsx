@@ -28,6 +28,15 @@ const Article = () => {
           <span className={styles.article_container__avatar}>
             <Avatar src={randUserAvatar} />
           </span>
+          <img
+            style={{
+              height: "35rem",
+              width: "35rem",
+              margin: "1rem 30rem 0 30rem",
+            }}
+            src={article.photo}
+            alt=""
+          />
           <div
             className={styles.article_container__html_container}
             dangerouslySetInnerHTML={{

@@ -27,7 +27,17 @@ const Articles = () => {
     const randUserAvatar = `https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`;
     return (
       <Link to={`/articles/${item.articleId}`}>
-        <List.Item style={{ width: "100%" }} key={index} extra={<p>Image</p>}>
+        <List.Item
+          style={{ width: "100%" }}
+          key={index}
+          extra={
+            <img
+              style={{ height: "15rem", width: "15rem" }}
+              src={item.photo}
+              alt=""
+            />
+          }
+        >
           <List.Item.Meta
             avatar={<Avatar src={randUserAvatar} />}
             description={`Created: ${formatDate(new Date(item.dateCreated))}`}

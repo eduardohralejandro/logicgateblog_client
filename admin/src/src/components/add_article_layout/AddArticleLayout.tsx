@@ -37,11 +37,15 @@ const AddArticleLayout = () => {
   const [selectedTechTag, setTechTach] = useState("");
   const { getSelectedValue } = useDropDownSelectState();
   const [title, setTitle] = useState("");
+  const [imgUrl, setimgUrl] = useState("");
   const token = localStorage.getItem("token");
   const dispatch = useDispatch<AppDispatch>();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
+  };
+  const getImgURL = (e: ChangeEvent<HTMLInputElement>) => {
+    setimgUrl(e.target.value);
   };
 
   const addArticle = () => {
@@ -52,7 +56,7 @@ const AddArticleLayout = () => {
           articleData: {
             title,
             body: editorContent,
-            photo: "",
+            photo: imgUrl,
             techTag: selectedTechTag as TechTag,
             programmingLanguage: selectedPLanguage as ProgrammingLanguage,
           },
@@ -95,14 +99,6 @@ const AddArticleLayout = () => {
               <>
                 <Typography.Title level={5}>Title</Typography.Title>
                 <InputElement value={title} onChange={handleInputChange} />
-                <Typography.Title style={{ marginTop: "1rem" }} level={5}>
-                  Content
-                </Typography.Title>
-                <TextEditor setEditorContent={setEditorContent} />
-              </>
-            }
-            footer={
-              <>
                 <Dropdown
                   menu={{
                     items: programmingLanguages,
@@ -137,6 +133,18 @@ const AddArticleLayout = () => {
                     </Space>
                   </Typography.Link>
                 </Dropdown>
+                <Typography.Title style={{ marginTop: "1rem" }} level={5}>
+                  Image URL
+                </Typography.Title>
+                <InputElement value={imgUrl} onChange={getImgURL} />
+                <Typography.Title style={{ marginTop: "1rem" }} level={5}>
+                  Content
+                </Typography.Title>
+                <TextEditor setEditorContent={setEditorContent} />
+              </>
+            }
+            footer={
+              <>
                 <ButtonsFooterElement
                   submit={addArticle}
                   justify={BtnJustifyType.END}
