@@ -5,6 +5,7 @@ import { fetchArticle } from "../../api/article/getArticle";
 import { IArticleRequest, createArticle } from "../../api/article/postArticle";
 import { Article } from "../../interfaces/interfaces";
 import { RootState } from "@reduxjs/toolkit/query";
+import { IArticleDelete, deleteArticle } from "../../api/article/deleteArticle";
 
 interface ArticlesState {
   data: Article[];
@@ -45,6 +46,18 @@ export const postArticlesAsync = createAsyncThunk(
     }
   }
 );
+
+export const deleteArticleAsync = createAsyncThunk(
+  "articles/deleteArticle",
+  async (data: IArticleDelete, thunkAPI) => {
+    try {
+      await deleteArticle(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 const articlesSlice = createSlice({
   name: "articles",
   initialState,
@@ -97,6 +110,22 @@ const articlesSlice = createSlice({
       )
       .addCase(
         fetchArticleAsync.rejected,
+        (state, action: PayloadAction<string>) => {
+          state.loading = "failed";
+          state.error = action.payload;
+        }
+      )
+      .addCase(deleteArticleAsync.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(
+        deleteArticleAsync.fulfilled,
+        (state, action: PayloadAction<Article>) => {
+          state.loading = "idle";
+        }
+      )
+      .addCase(
+        deleteArticleAsync.rejected,
         (state, action: PayloadAction<string>) => {
           state.loading = "failed";
           state.error = action.payload;
