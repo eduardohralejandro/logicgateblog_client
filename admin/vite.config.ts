@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/": {
+      "/api": {
         target: "https://logicgatesblog-9da8a03a3c58.herokuapp.com",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
