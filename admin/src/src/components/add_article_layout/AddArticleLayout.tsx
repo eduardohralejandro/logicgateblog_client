@@ -33,8 +33,8 @@ interface IUserInfoPayload extends JwtPayload {
 const AddArticleLayout = () => {
   const { open, showModal, handleOk, handleCancel, setOpen } = useModalState();
   const [editorContent, setEditorContent] = useState("");
-  const [selectedPLanguage, setPLanguage] = useState("");
-  const [selectedTechTag, setTechTach] = useState("");
+  const [selectedPLanguage, setPLanguage] = useState(ProgrammingLanguage.C);
+  const [selectedTechTag, setTechTach] = useState(TechTag.WEB);
   const { getSelectedValue } = useDropDownSelectState();
   const [title, setTitle] = useState("");
   const [imgUrl, setimgUrl] = useState("");
