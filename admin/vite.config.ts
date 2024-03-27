@@ -9,13 +9,13 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: apiUrl,
+        target: "https://logicgatesblog-9da8a03a3c58.herokuapp.com",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
     cors: {
-      origin: apiUrl,
+      origin: "https://logicgatesblog-9da8a03a3c58.herokuapp.com",
       methods: ["GET", "POST"],
       allowedHeaders: ["Content-Type", "Authorization"],
       preflightContinue: true,
