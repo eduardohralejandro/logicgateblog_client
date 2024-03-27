@@ -9,7 +9,7 @@ const apiClient = async <T>(
   options: RequestInit = {}
 ): Promise<T | ErrorMessage> => {
   try {
-    const response = await fetch(`/api/${endpoint}`, options);
+    const response = await fetch(`https://logicgatesblog-9da8a03a3c58.herokuapp.com/${endpoint}`, options);
     console.log(response)
     if (!response.ok) {
       const errorData: ErrorMessage = {
