@@ -17,7 +17,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: getBaseUrl(),
+        target: process.env.VITE_VERCEL_URL,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
