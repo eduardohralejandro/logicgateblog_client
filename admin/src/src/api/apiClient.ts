@@ -3,13 +3,14 @@ export interface ErrorMessage {
   statusCode: number;
   response: Response;
 }
-
+console.log("on api client")
 const apiClient = async <T>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<T | ErrorMessage> => {
   try {
     const response = await fetch(`/api/${endpoint}`, options);
+    console.log(response)
     if (!response.ok) {
       const errorData: ErrorMessage = {
         message: "Error occurred",
