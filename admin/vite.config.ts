@@ -1,22 +1,24 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+const apiUrl = process.env.PRODUCTION_URL || "http://localhost:5173";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': {
-        target: 'https://logicgatesblog-9da8a03a3c58.herokuapp.com',
+      "/api": {
+        target: apiUrl,
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+        rewrite: (path) => path.replace(/^\/api/, ""),
       },
-  },
+    },
     cors: {
-      origin: "https://logicgatesblog-9da8a03a3c58.herokuapp.com",
+      origin: apiUrl,
       methods: ["GET", "POST"],
       allowedHeaders: ["Content-Type", "Authorization"],
-      preflightContinue: true
-    }
+      preflightContinue: true,
+    },
   },
-})
+});
