@@ -9,7 +9,7 @@ const apiClient = async <T>(
   options: RequestInit = {}
 ): Promise<T | ErrorMessage> => {
   try {
-    const response = await fetch(`/testapi/${endpoint}`, options);
+    const response = await fetch(`/api/${endpoint}`, options);
     console.log(response)
     if (!response.ok) {
       const errorData: ErrorMessage = {
