@@ -2,7 +2,11 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 const apiUrl = process.env.VITE_VERCEL_URL || "http://localhost:5173";
-
+console.log("on vite config");
+console.log("on vite vercel url " + process.env.VITE_VERCEL_URL);
+if (process.env.VITE_VERCEL_URL) {
+  console.log("on vite vercel url " + process.env.VITE_VERCEL_URL);
+}
 // function getBaseUrl() {
 //   return process.env.VERCEL_ENV === "production"
 //     ? "https://logicgatesblog-9da8a03a3c58.herokuapp.com"
