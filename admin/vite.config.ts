@@ -17,13 +17,13 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: process.env.VITE_VERCEL_URL,
+        target: "https://logicgatesblog-9da8a03a3c58.herokuapp.com",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
     cors: {
-      origin: getBaseUrl(),
+      origin: "https://logicgatesblog-9da8a03a3c58.herokuapp.com",
       methods: ["GET", "POST"],
       allowedHeaders: ["Content-Type", "Authorization"],
       preflightContinue: true,
