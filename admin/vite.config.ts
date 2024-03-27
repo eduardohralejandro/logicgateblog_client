@@ -5,7 +5,7 @@ const apiUrl = process.env.VITE_VERCEL_URL || "http://localhost:5173";
 
 function getBaseUrl() {
   return process.env.VERCEL_ENV === "production"
-    ? process.env.VITE_VERCEL_URL
+    ? "https://logicgatesblog-9da8a03a3c58.herokuapp.com"
     : process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
     : ` http://localhost:5173`;
@@ -17,13 +17,13 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: getBaseUrl(),
+        target: "https://logicgatesblog-9da8a03a3c58.herokuapp.com",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
     cors: {
-      origin: getBaseUrl(),
+      origin: "https://logicgatesblog-9da8a03a3c58.herokuapp.com",
       methods: ["GET", "POST"],
       allowedHeaders: ["Content-Type", "Authorization"],
       preflightContinue: true,
