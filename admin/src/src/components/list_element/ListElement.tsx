@@ -8,6 +8,7 @@ interface IListElementProps<T> {
   pageSize?: number;
   dataSource: T[];
   renderItem: (item: T, index: number) => React.ReactNode;
+  className?: string;
 }
 
 const ListElement: FC<IListElementProps<T>> = ({
@@ -15,10 +16,12 @@ const ListElement: FC<IListElementProps<T>> = ({
   renderItem,
   listDirection,
   size,
+  className,
 }) => {
   return (
     <div>
       <List
+        className={className}
         itemLayout={listDirection}
         size={size}
         pagination={{
