@@ -8,6 +8,7 @@ interface AuthState {
   loading: "idle" | "pending" | "succeeded" | "failed";
   error: string | null;
   isAuthenticated: boolean;
+  token: string | null;
 }
 
 const initialState: AuthState = {
@@ -15,6 +16,7 @@ const initialState: AuthState = {
   loading: "idle",
   error: null,
   isAuthenticated: false,
+  token: localStorage.getItem("token"),
 };
 
 export const registerUserAsync = createAsyncThunk(
@@ -44,10 +46,11 @@ const authRegisterSlice = createSlice({
       })
       .addCase(
         registerUserAsync.fulfilled,
-        (state, action: PayloadAction<"">) => {
+        (state, action: PayloadAction<any>) => {
           state.loading = "succeeded";
           state.data = action.payload;
           state.isAuthenticated = true;
+          localStorage.setItem("token", action.payload?.token);
         }
       )
       .addCase(
@@ -56,6 +59,7 @@ const authRegisterSlice = createSlice({
           state.loading = "failed";
           state.error = action.payload;
           state.isAuthenticated = false;
+          state.token = null;
         }
       );
   },
@@ -64,8 +68,8 @@ const authRegisterSlice = createSlice({
 export const { setAuthenticated, setUnauthenticated } =
   authRegisterSlice.actions;
 
-export const authSelect = (state: RootState) => state.register.data;
+export const authSelect = (state: RootState) => state.register?.data;
 export const selectIsAuthenticated = (state: RootState) =>
-  state.register.isAuthenticated;
+  state.auth?.isAuthenticated;
 
 export default authRegisterSlice.reducer;

@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 import {
   registerUserAsync,
   authSelect,
-  setAuthenticated,
 } from "../../features/auth/userRegisterSlice";
 import { AppDispatch } from "../../app/store";
 import IAuthor from "../../interfaces/author";
+import { useEffect } from "react";
 
 const RegisterLayout = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -17,17 +17,16 @@ const RegisterLayout = () => {
 
   const [form] = Form.useForm();
 
+  useEffect(() => {
+    if (token?.token) {
+      navigate("/");
+    }
+  }, [token, navigate]);
+
   const onFinish = () => {
     const values: IAuthor = form.getFieldsValue();
     delete values.password2;
     dispatch(registerUserAsync({ ...values }));
-
-    if (token !== undefined) {
-      localStorage.setItem("token", token.token);
-      dispatch(setAuthenticated(token));
-      navigate("/articles");
-      return <>Loading...</>; // TODO: Loader component
-    }
   };
   const designProps = { labelCol: 6, wrapperCol: 8 };
   const customFormStyle = {
