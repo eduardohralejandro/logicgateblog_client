@@ -7,12 +7,19 @@ const { Title } = Typography;
 interface IHeaderElementProps {
   title: string;
   level: HeaderSize;
+  className?: string;
 }
 
-const HeaderElement: FC<IHeaderElementProps> = ({ title, level }) => {
+const HeaderElement: FC<IHeaderElementProps> = ({
+  title,
+  level,
+  className,
+}) => {
   return (
     <>
-      <Title level={level}>{title}</Title>
+      <Title className={className} level={level}>
+        {title}
+      </Title>
     </>
   );
 };
