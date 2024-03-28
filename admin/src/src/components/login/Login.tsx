@@ -1,11 +1,15 @@
 import { Button, Form, Input } from "antd";
-import { Logo } from "../components";
+import { HeaderElement, Logo } from "../components";
 import styles from "./login.module.scss";
 
 const Login = () => {
   return (
     <>
       <Logo className={styles.login__logo} />
+      <div className={styles.login_header}>
+        <HeaderElement title="Logic gates" level={4} />
+      </div>
+
       <Form.Item
         label="email"
         name="email"
@@ -32,11 +36,11 @@ const Login = () => {
         ]}
         style={{ display: "flex", flexDirection: "column" }}
       >
-        <Input />
+        <Input type="password" />
       </Form.Item>
       <Form.Item>
         <Button
-          style={{ width: "100%" }}
+          style={{ width: "100%", backgroundColor: "#32a852" }}
           type="primary"
           htmlType="submit"
           className="login-form-button"

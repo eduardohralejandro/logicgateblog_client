@@ -29,11 +29,12 @@ interface IFormProps {
   layout: "horizontal" | "vertical" | "inline";
   style?: { [key: string]: string };
   form?: FormInstance;
+  className?: string;
 }
 type FormPropsWithDefaults = IFormProps & { layout?: "vertical" };
 
 const FormElement: FC<FormPropsWithDefaults> = (
-  { children, name, layout, style, form, onFinish },
+  { children, name, layout, style, form, onFinish, className },
   designProps: IDesignProps
 ) => {
   const onFinishFailed = (errorInfo: IErrorInfo) => {
@@ -43,6 +44,7 @@ const FormElement: FC<FormPropsWithDefaults> = (
   return (
     <>
       <Form
+        className={className}
         form={form}
         name={name}
         layout={layout}

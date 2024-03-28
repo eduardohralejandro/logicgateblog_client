@@ -10,6 +10,7 @@ import { ILoginAuthor } from "../../api/login/login";
 import { Form } from "antd";
 import { useEffect } from "react";
 import { authSelect } from "../../features/auth/userRegisterSlice";
+import styles from "./login_layout.module.scss";
 
 const LoginLayout = () => {
   const token = useSelector(loginSelect);
@@ -31,19 +32,13 @@ const LoginLayout = () => {
     dispatch(loginUserAsync({ ...values }));
   };
   const designProps = { labelCol: 6, wrapperCol: 8 };
-  const customFormStyle = {
-    width: "20rem",
-    border: "1px solid #d1d1d1",
-    padding: "1rem",
-    borderRadius: "6px",
-  };
   return (
     <>
       <FormElement
+        className={styles.loginform}
         form={form}
         onFinish={onFinish}
         {...designProps}
-        style={customFormStyle}
         name="basic"
         layout="vertical"
         children={<Login />}

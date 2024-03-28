@@ -9,6 +9,7 @@ import {
 import { AppDispatch } from "../../app/store";
 import IAuthor from "../../interfaces/author";
 import { useEffect } from "react";
+import styles from "./register_layout.module.scss";
 
 const RegisterLayout = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -29,19 +30,13 @@ const RegisterLayout = () => {
     dispatch(registerUserAsync({ ...values }));
   };
   const designProps = { labelCol: 6, wrapperCol: 8 };
-  const customFormStyle = {
-    width: "20rem",
-    border: "1px solid #d1d1d1",
-    padding: "1rem",
-    borderRadius: "6px",
-  };
   return (
     <>
       <FormElement
+        className={styles.register_container}
         form={form}
         onFinish={onFinish}
         {...designProps}
-        style={customFormStyle}
         name="basic"
         layout="vertical"
         children={<Register />}
