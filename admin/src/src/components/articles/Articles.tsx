@@ -44,7 +44,7 @@ const Articles = () => {
             key={index}
             extra={
               <img
-                style={{ height: "15rem", width: "15rem" }}
+                style={{ height: "7rem", width: "7rem" }}
                 src={item?.photo}
                 alt=""
               />
@@ -90,6 +90,7 @@ const Articles = () => {
 
   return (
     <ListElement
+      className={styles.article_container}
       dataSource={articles}
       renderItem={renderArticles}
       listDirection="vertical"

@@ -30,9 +30,8 @@ const Article = () => {
           </span>
           <img
             style={{
-              height: "35rem",
-              width: "35rem",
-              margin: "1rem 30rem 0 30rem",
+              height: "27rem",
+              width: "100%",
             }}
             src={article.photo}
             alt=""

@@ -71,7 +71,7 @@ const AddArticleLayout = () => {
   };
 
   const customStyles = {
-    backgroundColor: "#52d64b",
+    backgroundColor: "#32a852",
     color: "white",
     width: "8rem",
     alignSelf: "flex-end",
