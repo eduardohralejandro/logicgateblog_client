@@ -16,18 +16,21 @@ import {
   Article,
 } from "./src/components/components";
 import { useSelector } from "react-redux";
+import { authSelect } from "./src/features/auth/userRegisterSlice";
 
 function ProtectedRoutes() {
   const isLoggedIn = useSelector(loginSelect);
-  return isLoggedIn ? <Outlet /> : <Navigate to="/login" />;
+  const isAuthenticated = useSelector(authSelect);
+  return isLoggedIn || isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
 }
 
 function App() {
   const isLoggedIn = useSelector(loginSelect);
+  const isAuthenticated = useSelector(authSelect);
   return (
     <Router>
       <div className={styles.app_container}>
-        {!isLoggedIn ? null : <VerticalNavbar />}
+        {isLoggedIn || isAuthenticated?.token ? <VerticalNavbar /> : null}
         <Routes>
           <Route element={<ProtectedRoutes />}>
             <Route path="/" element={<UserItem />} />

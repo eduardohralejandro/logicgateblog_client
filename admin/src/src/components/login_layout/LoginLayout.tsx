@@ -9,9 +9,11 @@ import { useNavigate } from "react-router-dom";
 import { ILoginAuthor } from "../../api/login/login";
 import { Form } from "antd";
 import { useEffect } from "react";
+import { authSelect } from "../../features/auth/userRegisterSlice";
 
 const LoginLayout = () => {
   const token = useSelector(loginSelect);
+  const auth = useSelector(authSelect);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -21,7 +23,7 @@ const LoginLayout = () => {
     if (token?.token) {
       navigate("/");
     }
-  }, [token, navigate]);
+  }, [token, navigate, auth]);
 
   const onFinish = () => {
     const values: ILoginAuthor = form.getFieldsValue();
