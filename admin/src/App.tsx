@@ -30,7 +30,17 @@ function App() {
   return (
     <Router>
       <div className={styles.app_container}>
-        {isLoggedIn || isAuthenticated?.token ? <VerticalNavbar /> : null}
+        {isLoggedIn || isAuthenticated?.token ? (
+          <div style={{ display: "flex" }}>
+            <VerticalNavbar />{" "}
+            <div
+              style={{
+                maxWidth: "18rem",
+                minWidth: "18rem",
+              }}
+            ></div>
+          </div>
+        ) : null}
         <Routes>
           <Route element={<ProtectedRoutes />}>
             <Route path="/" element={<UserItem />} />
