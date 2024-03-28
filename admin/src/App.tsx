@@ -35,8 +35,8 @@ function App() {
             <VerticalNavbar />{" "}
             <div
               style={{
-                maxWidth: "18rem",
-                minWidth: "18rem",
+                maxWidth: "25rem",
+                minWidth: "25rem",
               }}
             ></div>
           </div>
