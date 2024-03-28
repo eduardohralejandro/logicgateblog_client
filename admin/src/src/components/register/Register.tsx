@@ -1,6 +1,7 @@
 import { Button, Form, Input } from "antd";
 import { HeaderElement, Logo } from "../components";
 import styles from "./register.module.scss";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   return (
@@ -84,6 +85,7 @@ const Register = () => {
           Register
         </Button>
       </Form.Item>
+      <Link to="/login">Already subscribed? Please sign in</Link>
     </div>
   );
 };
