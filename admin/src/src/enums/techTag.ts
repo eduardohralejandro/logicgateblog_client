@@ -4,6 +4,14 @@ enum TechTag {
   MOBILE = "MOBILE",
   ELECTRONICS = "ELECTRONICS",
   CLOUD = "CLOUD",
+  HTML = "HTML",
+  CSS = "CSS",
+  HTTP = "HTTP",
+  IP = "IP",
+  API = "API",
+  EMBEDDEDSYSTEM = "EMBEDDEDSYSTEM",
+  CYBERSECURITY = "CYBERSECURITY",
+  DEVOPS = "DEVOPS",
 }
 
 export default TechTag;
