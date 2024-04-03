@@ -55,7 +55,6 @@ const Articles = () => {
               description={`Created: ${formatDate(new Date(item.dateCreated))}`}
               title={item.title}
             />
-
             {truncateString(htmlParser(item.body), 300)}
             <div
               className={styles.articles__trash_container}

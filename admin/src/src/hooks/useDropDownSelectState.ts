@@ -1,10 +1,10 @@
 const useDropDownSelectState = () => {
-  const getSelectedValue = (item: I[], data: Y[]): string => {
+  const getSelectedValue = (item: I[], data: Y[]): string | null => {
     const selectedTag = data.find((tag) => tag.key === item.key);
     if (selectedTag) {
       return selectedTag.label;
     }
-    return "";
+    return null;
   };
 
   return {
