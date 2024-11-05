@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-const apiUrl = process.env.VITE_VERCEL_URL || "http://localhost:5173";
+const apiUrl = process.env.VITE_VERCEL_URL || "http://localhost:8080";
 console.log("on vite config");
 console.log("on vite vercel url " + process.env.VITE_VERCEL_URL);
 if (process.env.VITE_VERCEL_URL) {
@@ -14,16 +14,18 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://logicgatesblog-9da8a03a3c58.herokuapp.com",
+        target: "http://localhost:8080",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
     cors: {
-      origin: "https://logicgatesblog-9da8a03a3c58.herokuapp.com",
+      origin: "http://localhost:8080",
       methods: ["GET", "POST"],
       allowedHeaders: ["Content-Type", "Authorization"],
       preflightContinue: true,
     },
   },
 });
+
+// "https://logicgatesblog-9da8a03a3c58.herokuapp.com"
